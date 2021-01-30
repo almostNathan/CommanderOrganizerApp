@@ -3,12 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <AutoCompleteTextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/search_bar_button_layout"
+        android:paddingVertical="5dp">
+
+    <AutoCompleteTextView
+        android:id="@+id/search_auto_complete"
+        android:dropDownHeight="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search For:"
+        android:layout_toStartOf="@id/search_button"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_button"
+        android:layout_alignParentEnd="true"
+        android:text="Search"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_results"
+        android:layout_below="@+id/search_bar_button_layout"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </RelativeLayout>

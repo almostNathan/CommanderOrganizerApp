@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddDeckFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_card_relative_layout"
+        android:layout_marginHorizontal="5dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/add_card_auto_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/add_card_button"
+            android:background="@color/white"
+            android:completionThreshold="3"
+            android:dropDownHeight="400dp"
+            android:hint="Enter Card"
+            android:layout_centerVertical="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Add Card"
+            android:textSize="12sp"
+            android:id="@+id/add_card_button"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="or copy and Paste Deck"
+        android:id="@+id/add_deck_edit_text"
+        android:inputType="textMultiLine"
+        android:layout_margin="10dp"
+        android:gravity="top"
+        android:background="@color/white"
+        android:layout_below="@id/add_card_relative_layout"
+        android:layout_above="@id/submit_deck"/>
+
+    <Button
+        android:id="@+id/submit_deck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Deck"
+        android:layout_marginHorizontal="20dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

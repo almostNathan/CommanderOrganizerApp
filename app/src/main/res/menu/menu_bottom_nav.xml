@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/commander_list_fragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home_button_title"/>
+    <item
+        android:id="@+id/add_deck_fragment"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:title="@string/add_deck_button_title"/>
+    <item
+        android:id="@+id/search_cards_fragment"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search_button_title"/>
+</menu>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/commander_list_fragment">
+    <fragment
+        android:id="@+id/commander_list_fragment"
+        android:name="com.example.commanderorganizerapp.CommanderListFragment"
+        android:label="fragment_commander_list_adapter"
+        tools:layout="@layout/fragment_commander_list"
+        >
+        <action
+            android:id="@+id/action_commanderListFragment_to_addDeckFragment"
+            app:destination="@id/add_deck_fragment" />
+        <action
+            android:id="@+id/action_commanderListFragment_to_cardListFragment"
+            app:destination="@id/deck_list_fragment" />
+        <action
+            android:id="@+id/action_commander_list_fragment_to_search_cards_fragment"
+            app:destination="@id/search_cards_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_deck_fragment"
+        android:name="com.example.commanderorganizerapp.AddDeckFragment"
+        android:label="fragment_add_deck"
+        tools:layout="@layout/fragment_add_deck" >
+        <argument
+            android:name="commanderValue"
+            android:defaultValue="None" />
+        <action
+            android:id="@+id/action_add_deck_fragment_to_commander_list_fragment"
+            app:destination="@id/commander_list_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deck_list_fragment"
+        android:name="com.example.commanderorganizerapp.DeckListFragment"
+        android:label="fragment_card_list_adapter"
+        tools:layout="@layout/fragment_deck_list" >
+        <argument android:name="commanderKey"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_card_list_fragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_cards_fragment"
+        android:name="com.example.commanderorganizerapp.search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.example.commanderorganizerapp.CardDetailFragment"
+        android:label="fragment_card_detail"
+        tools:layout="@layout/fragment_card_detail" >
+        <argument android:name="passedCard"
+            app:argType="com.example.commanderorganizerapp.Card" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_deck_list_fragment"
+            app:destination="@id/deck_list_fragment" />
+    </fragment>
+</navigation>

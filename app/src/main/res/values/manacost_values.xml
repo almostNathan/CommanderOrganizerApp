@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="manacost">
+        <item name = "W">@drawable/manacost_white</item>
+        <item name = "U">@drawable/manacost_blue</item>
+        <item name = "B">@drawable/manacost_black</item>
+        <item name = "R">@drawable/manacost_red</item>
+        <item name = "G">@drawable/manacost_green</item>
+        <item name = "">@drawable/manacost_zero</item>
+        <item name = "1">@drawable/manacost_one</item>
+        <item name = "2">@drawable/manacost_two</item>
+        <item name = "3">@drawable/manacost_three</item>
+        <item name = "4">@drawable/manacost_four</item>
+        <item name = "5">@drawable/manacost_five</item>
+        <item name = "6">@drawable/manacost_six</item>
+        <item name = "7">@drawable/manacost_seven</item>
+        <item name = "8">@drawable/manacost_eight</item>
+        <item name = "9">@drawable/manacost_nine</item>
+        <item name = "10">@drawable/manacost_ten</item>
+        <item name = "11">@drawable/manacost_eleven</item>
+        <item name = "12">@drawable/manacost_twelve</item>
+        <item name = "13">@drawable/manacost_thirteen</item>
+        <item name = "14">@drawable/manacost_fourteen</item>
+        <item name = "15">@drawable/manacost_fifteen</item>
+        <item name = "16">@drawable/manacost_sixteen</item>
+        <item name = "17">@drawable/manacost_seventeen</item>
+        <item name = "18">@drawable/manacost_eight</item>
+        <item name = "19">@drawable/manacost_nineteen</item>
+        <item name = "20">@drawable/manacost_twenty</item>
+        <item name = "X">@drawable/manacost_x</item>
+        <item name = "W/U">@drawable/manacost_white_blue</item>
+        <item name = "W/B">@drawable/manacost_white_black</item>
+        <item name = "U/B">@drawable/manacost_blue_black</item>
+        <item name = "U/R">@drawable/manacost_blue_red</item>
+        <item name = "B/R">@drawable/manacost_black_red</item>
+        <item name = "B/G">@drawable/manacost_black_green</item>
+        <item name = "R/W">@drawable/manacost_red_white</item>
+        <item name = "R/G">@drawable/manacost_red_green</item>
+        <item name = "G/W">@drawable/manacost_green_white</item>
+        <item name = "G/U">@drawable/manacost_green_blue</item>
+        <item name = "2/W">@drawable/manacost_colorless_white</item>
+        <item name = "2/U">@drawable/manacost_colorless_blue</item>
+        <item name = "2/B">@drawable/manacost_colorless_black</item>
+        <item name = "2/R">@drawable/manacost_colorless_red</item>
+        <item name = "2/G">@drawable/manacost_colorless_green</item>
+        <item name = "P/W">@drawable/manacost_phyrexian_white</item>
+        <item name = "P/U">@drawable/manacost_phyrexian_blue</item>
+        <item name = "P/B">@drawable/manacost_phyrexian_black</item>
+        <item name = "P/R">@drawable/manacost_phyrexian_red</item>
+        <item name = "P/G">@drawable/manacost_phyrexian_green</item>
+    </array>
+
+
+</resources>

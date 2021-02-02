@@ -5,4 +5,10 @@
     <string name="home_button_title">Home</string>
     <string name="add_deck_button_title">Add Deck</string>
     <string name="search_button_title">Search</string>
+    <string name="reset_decks_menu_item">Reset Decks</string>
+    <string name="reset_deck_dialog_question">Would you like to reset all your decks?</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="card_image_description">Card Image</string>
+    <string name="card_detail_commander_list_title">This card is in:</string>
 </resources>

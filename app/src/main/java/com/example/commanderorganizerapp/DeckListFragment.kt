@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 /**
  * A fragment representing a list of Items.
@@ -24,6 +25,13 @@ class DeckListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewList = view.findViewById<RecyclerView>(R.id.card_list)
+        val commanderNameView = view.findViewById<TextView>(R.id.deck_list_commander_name)
+
+        //get commander name from the key passed and set it to the textview
+        val commanderName = GetStuff.getCommandersInDecks(view.context).filter { it.key == commanderKey }[0].value
+        commanderNameView.text = commanderName
+        //create background gradient for title
+        commanderNameView.background = CreateGradient(view.context, commanderName).getBackgroundGradient()
 
         val cardsInAllDecks = GetStuff.getCardsInDecks(context)
         val cardsInCurrentDeck = ArrayList<Card>()
@@ -32,7 +40,11 @@ class DeckListFragment : Fragment() {
                 cardsInCurrentDeck.add(card)
             }
         }
-        viewList.adapter = DeckRecyclerViewAdapter(cardsInCurrentDeck)
+        val allCardsManaCost = ArrayList<ArrayList<Int>>()
+        for(card in cardsInCurrentDeck){
+            allCardsManaCost.add(GetStuff.getManaCostIdArray(card.cardManaCost))
+        }
+        viewList.adapter = DeckRecyclerViewAdapter(cardsInCurrentDeck, allCardsManaCost)
 
     }
 

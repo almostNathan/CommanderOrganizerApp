@@ -2,7 +2,11 @@ package com.example.commanderorganizerapp
 
 import java.io.Serializable
 
-class Card(val cardName: String, var commanderValue: Int) : Serializable {
+class Card(val cardName: String,
+           val cardColorIdentity : String,
+           val cardManaCost : String,
+           commanderValue: Int) : Serializable {
+
     var listOfCommanders = ArrayList<Int>()
 
     init{

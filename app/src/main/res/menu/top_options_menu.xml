@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.commanderorganizerapp.MainActivity">
+
+    <item
+        android:title="@string/reset_decks_menu_item"
+        android:id="@+id/reset_decks"
+        app:showAsAction="ifRoom|withText"/>
+
+
+
+</menu>

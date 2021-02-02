@@ -1,11 +1,16 @@
 package com.example.commanderorganizerapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
@@ -30,6 +35,14 @@ class MainActivity : AppCompatActivity() {
         bottomNavMenu.setupWithNavController(navController)
 
 
+        //prints cards in library
+//        for(item in GetStuff.getCardsInDecks(this)){
+//            println("${item.cardName} ${item.listOfCommanders} ${item.cardManaCost}")
+//        }
+
+
+
+
 
 //
 //        BottomNavigationView.OnNavigationItemSelectedListener {
@@ -45,7 +58,44 @@ class MainActivity : AppCompatActivity() {
         makeStarterData()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
 
+        if (id == R.id.reset_decks) {
+            //set up AlertDialog:dialogbuilder to be used later
+            val cmdrNameAlertDialog = AlertDialog.Builder(this as Context).create()
+            //inflate the enter_cmdr_dialog View
+            val dialogView = layoutInflater.inflate(R.layout.reset_deck_dialog, null)
+
+
+            val buttonSubmit: Button = dialogView.findViewById(R.id.reset_dialog_submit)
+            val buttonCancel: Button = dialogView.findViewById(R.id.reset_dialot_cancel)
+
+            buttonCancel.setOnClickListener {
+                cmdrNameAlertDialog.dismiss()
+            }
+
+            buttonSubmit.setOnClickListener {
+
+                File("${applicationContext.filesDir} cardsInDecks").delete()
+                File("${applicationContext.filesDir} commandersInDecks").delete()
+                makeStarterData()
+                cmdrNameAlertDialog.dismiss()
+
+
+
+            }
+            cmdrNameAlertDialog.setView(dialogView)
+            cmdrNameAlertDialog.show()
+        }
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_options_menu, menu)
+
+        return true
+    }
 
     private fun makeStarterData(){
         val listOfCards = ArrayList<Card>()

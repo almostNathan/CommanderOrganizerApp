@@ -10,7 +10,7 @@ class CreateGradient (val context: Context, private val cardName : String?){
 
     fun getBackgroundGradient() : GradientDrawable{
         var cardColors = listOf<String>()
-        val inputStream = context.resources.openRawResource(R.raw.legal_allcards_coloridentity_cmc)
+        val inputStream = context.resources.openRawResource(R.raw.legal_allcards_coloridentity_manacost)
         val commanders = inputStream.bufferedReader().readLines()
         for (line in commanders){
             if(line.split("|")[0] == cardName)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_deck_dialog_question"
+        android:id="@+id/reset_dialog_text"
+        android:layout_marginHorizontal="50dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reset_dialog_text"
+        android:id="@+id/reset_dialog_submit"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/submit_button_text"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/reset_dialog_submit"
+        android:layout_below="@id/reset_dialog_text"
+        android:id="@+id/reset_dialot_cancel"
+        android:text="@string/cancel_button_text"/>
+
+</RelativeLayout>

@@ -20,17 +20,9 @@ import com.squareup.picasso.Picasso
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-/**
- * A simple [Fragment] subclass.
- * Use the [CardDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CardDetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
 
-    var passedCard : Card = Card("name" , -1)
+    var passedCard : Card = Card("name" ,"","", -1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,7 +78,7 @@ class CardDetailFragment : Fragment() {
         val cardStringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
-                val cardJsonObject = (JsonParser().parse(response).asJsonObject)
+                val cardJsonObject = (JsonParser.parseString(response).asJsonObject)
                 val urlList = cardJsonObject.getAsJsonObject("image_uris")
                 //check if card is 2 sided
                 //will return null because API has 2 "image_uris" items
@@ -94,7 +86,7 @@ class CardDetailFragment : Fragment() {
                     addFlipCardImage(cardJsonObject)
                 }else {
                     val imageUrl = urlList.get("png").asString
-                    val cardImage = view?.findViewById<ImageView>(R.id.card_image)
+                    val cardImage = view.findViewById<ImageView>(R.id.card_image)
                     Picasso.get()
                         .load(imageUrl)
                         .into(cardImage)

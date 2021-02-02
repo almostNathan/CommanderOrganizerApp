@@ -8,7 +8,7 @@
         android:id="@+id/commander_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingVertical="12dp"
-        android:textAppearance="?attr/textAppearanceListItem"/>
+        android:textSize="@dimen/adapter_text_size"
+        android:paddingVertical="@dimen/adapter_vertical_padding"/>
 
 </LinearLayout>

@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/card_detail_commander_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/card_detail_commander_name"
-        android:textSize="16sp"
-        android:paddingVertical="5dp"/>
+        android:textSize="@dimen/adapter_text_size"
+        android:paddingVertical="@dimen/adapter_vertical_padding"/>
 
 </LinearLayout>

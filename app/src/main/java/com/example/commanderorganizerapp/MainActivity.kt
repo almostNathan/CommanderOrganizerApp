@@ -35,25 +35,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavMenu.setupWithNavController(navController)
 
 
-        //prints cards in library
-//        for(item in GetStuff.getCardsInDecks(this)){
-//            println("${item.cardName} ${item.listOfCommanders} ${item.cardManaCost}")
-//        }
-
-
-
-
-
-//
-//        BottomNavigationView.OnNavigationItemSelectedListener {
-//            when(it.itemId){
-//                R.id.commander_list_fragment ->
-//            }
-//        }
-//
-//        NavigationUI.onNavDestinationSelected(findViewById(R.id.commander_list_fragment), navController)
-//        NavigationUI.onNavDestinationSelected(findViewById(R.id.card_list_fragment), navController)
-//        NavigationUI.onNavDestinationSelected(findViewById(R.id.search_cards_fragment), navController)
 
         makeStarterData()
     }
@@ -65,11 +46,11 @@ class MainActivity : AppCompatActivity() {
             //set up AlertDialog:dialogbuilder to be used later
             val cmdrNameAlertDialog = AlertDialog.Builder(this as Context).create()
             //inflate the enter_cmdr_dialog View
-            val dialogView = layoutInflater.inflate(R.layout.reset_deck_dialog, null)
+            val dialogView = layoutInflater.inflate(R.layout.confirmation_dialog, null)
 
 
-            val buttonSubmit: Button = dialogView.findViewById(R.id.reset_dialog_submit)
-            val buttonCancel: Button = dialogView.findViewById(R.id.reset_dialot_cancel)
+            val buttonSubmit: Button = dialogView.findViewById(R.id.delete_confirmation_submit)
+            val buttonCancel: Button = dialogView.findViewById(R.id.delete_confirmation_cancel)
 
             buttonCancel.setOnClickListener {
                 cmdrNameAlertDialog.dismiss()

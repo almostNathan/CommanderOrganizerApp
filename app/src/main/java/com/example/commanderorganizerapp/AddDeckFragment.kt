@@ -13,17 +13,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddDeckFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class AddDeckFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var commanderName :String= ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,20 +70,31 @@ class AddDeckFragment : Fragment() {
         val addCardButton = view.findViewById<Button>(R.id.add_card_button)
         val deckListEditText = view.findViewById<EditText>(R.id.add_deck_edit_text)
         val submitButton = view.findViewById<Button>(R.id.submit_deck)
+        val cardCountView = view.findViewById<TextView>(R.id.card_count_text_view)
 
-
-
-
-        deckListEditText.append("*CMDR* ${commanderName}")
-
+        //set hint to add commander if no cards are in deck
+        if ("*CMDR*" !in deckListEditText.text.toString()){
+            addCardView.hint = "Add Your Commander"
+        }else addCardView.hint = "Add Card"
 
         //set up adapter for autocomplete
         addCardView.setAdapter(ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, GetStuff.getListOfAllCards(context)))
 
         //add card to decklist listener
         addCardButton.setOnClickListener {
-            deckListEditText.append("\n1x ${addCardView.text.toString()}")
+            if(deckListEditText.text.isEmpty()) deckListEditText.append("*CMDR* ${addCardView.text.toString()}")
+            else deckListEditText.append("\n1x ${addCardView.text.toString()}")
             addCardView.setText("")
+            var cardCount = 0
+            for (line in deckListEditText.text.toString().split("\n")){
+                when(val numberOfCard = line.split(" ")[0]){
+                    "*CMDR*" ->  cardCount = cardCount.inc()
+                    "1x" ->  cardCount = cardCount.inc()
+                    else ->  cardCount = cardCount.plus(numberOfCard.substring(0, (numberOfCard.length-1)).toInt())
+                }
+            }
+            println(cardCount)
+            cardCountView.text = cardCount.toString()
         }
 
         submitButton.setOnClickListener {
@@ -105,30 +109,9 @@ class AddDeckFragment : Fragment() {
 
     }
 
-    private fun addDeckToLibrary(decklist: String) {
 
 
-    }
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddDeckFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(commanderName : String) =
-            AddDeckFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-    }
 
 
 

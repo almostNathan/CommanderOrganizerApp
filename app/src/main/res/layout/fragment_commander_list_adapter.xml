@@ -6,9 +6,18 @@
 
     <TextView
         android:id="@+id/commander_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:textSize="@dimen/adapter_text_size"
-        android:paddingVertical="@dimen/adapter_vertical_padding"/>
+        android:paddingVertical="@dimen/adapter_vertical_padding"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/commander_options_menu"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:text="@string/three_dot_menu"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textAlignment="center"/>
 
 </LinearLayout>

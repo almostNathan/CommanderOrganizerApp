@@ -5,9 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".AddDeckFragment">
 
+    <TextView
+        android:id="@+id/card_count_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/card_count_text_view"
         android:id="@+id/add_card_relative_layout"
         android:layout_marginHorizontal="5dp">
 
@@ -15,18 +23,18 @@
             android:id="@+id/add_card_auto_complete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/add_card_button"
+            android:layout_toStartOf="@id/add_card_button"
             android:background="@color/white"
             android:completionThreshold="3"
             android:dropDownHeight="400dp"
-            android:hint="Enter Card"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            tools:ignore="LabelFor" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Add Card"
+            android:layout_alignParentEnd="true"
+            android:text="@string/add_card_button"
             android:textSize="12sp"
             android:id="@+id/add_card_button"/>
 
@@ -35,20 +43,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="or copy and Paste Deck"
+        android:autofillHints="@string/add_deck_hint"
         android:id="@+id/add_deck_edit_text"
         android:inputType="textMultiLine"
         android:layout_margin="10dp"
         android:gravity="top"
         android:background="@color/white"
         android:layout_below="@id/add_card_relative_layout"
-        android:layout_above="@id/submit_deck"/>
+        android:layout_above="@id/submit_deck"
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/submit_deck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Deck"
+        android:text="@string/add_deck_button"
         android:layout_marginHorizontal="20dp"
         android:layout_alignParentBottom="true"/>
 

@@ -6,9 +6,17 @@
     <string name="add_deck_button_title">Add Deck</string>
     <string name="search_button_title">Search</string>
     <string name="reset_decks_menu_item">Reset Decks</string>
-    <string name="reset_deck_dialog_question">Would you like to reset all your decks?</string>
-    <string name="submit_button_text">Submit</string>
-    <string name="cancel_button_text">Cancel</string>
+    <string name="confirmation_text">Would you like to reset all your decks?</string>
+    <string name="submit_button_text">Yes</string>
+    <string name="cancel_button_text">No</string>
     <string name="card_image_description">Card Image</string>
     <string name="card_detail_commander_list_title">This card is in:</string>
+    <string name="delete_deck_menu_button">Delete Deck</string>
+    <string name="three_dot_menu">⋮</string>
+    <string name="commander_list_title">List of Commanders</string>
+    <string name="delete_deck_commander_three_dot_menu">Delete Deck</string>
+    <string name="edit_deck_commander_three_dot_menu">Edit Deck</string>
+    <string name="add_card_button">Add Card</string>
+    <string name="add_deck_hint">or copy and Paste Deck</string>
+    <string name="add_deck_button">Add Deck</string>
 </resources>

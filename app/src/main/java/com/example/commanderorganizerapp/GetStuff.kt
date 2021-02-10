@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import java.io.FileInputStream
 import java.io.ObjectInputStream
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
 class GetStuff {
 
@@ -16,7 +19,7 @@ class GetStuff {
             val cardInputStream = ObjectInputStream(FileInputStream("${context?.filesDir} cardsInDecks"))
             cardsInDecks = cardInputStream.readObject() as ArrayList<Card>
             cardInputStream.close()
-            return cardsInDecks
+            return sortCardsInDecks(cardsInDecks)
         }
 
         fun getCommandersInDecks(context : Context?): ArrayList<Commander>{
@@ -85,6 +88,33 @@ class GetStuff {
             }else{
                 return ArrayList<Int>()
             }
+        }
+
+        fun deleteCommander(commanderId: Int, context: Context) {
+            val allCards = getCardsInDecks(context)
+            val commanders = getCommandersInDecks(context)
+
+            //look for cards with commanderId in their list and remove
+            for (card in allCards){
+                if (card.listOfCommanders.contains(commanderId)){
+                    card.listOfCommanders.remove(commanderId)
+                    //if card is in no decks, remove card
+                    if(card.listOfCommanders.isEmpty()){
+                        allCards.remove(card)
+                    }
+                }
+            }
+            for (commander in commanders){
+                if (commander.key == commanderId){
+                    commanders.remove(commander)
+                }
+            }
+        }
+
+        private fun sortCardsInDecks(cardList: ArrayList<Card>): ArrayList<Card> {
+            val cardSorter : Comparator<Card> = Comparator{ c1: Card, c2: Card -> c1.cardManaCost.compareTo(c2.cardName) }
+            Collections.sort(cardList, cardSorter)
+            return cardList
         }
 
     }

@@ -1,8 +1,5 @@
 package com.example.commanderorganizerapp
 
-import android.app.ActionBar
-import android.util.Xml
-import android.view.Gravity
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,17 +10,15 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 
 import com.example.commanderorganizerapp.dummy.DummyContent.DummyItem
-import org.xmlpull.v1.XmlPullParser
-import java.lang.reflect.Parameter
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class DeckRecyclerViewAdapter(
+class DeckListRecyclerViewAdapter(
     private val cardsInThisDeck: List<Card>,
     private val allCardsManaCost : ArrayList<ArrayList<Int>>
-) : RecyclerView.Adapter<DeckRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DeckListRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -35,14 +30,21 @@ class DeckRecyclerViewAdapter(
         val card = cardsInThisDeck[position]
         holder.cardNameView.text = card.cardName
 
-        if (allCardsManaCost[position].size >= 0) {
+
+        //draw manacost  PROBLEM redraws manacost on scroll
+        //if this rows # of children views less than manacost length
+        if (allCardsManaCost[position].size >= 0 && holder.holderLayout.childCount - 1 < allCardsManaCost[position].size) {
             for (item in allCardsManaCost[position]) {
                 val image = ImageView(holder.itemView.context)
+                //get the preset manaSymbol size
                 val size = holder.holderLayout.resources.getDimensionPixelSize(R.dimen.manacost_icon_size)
-                val imgParams = LinearLayout.LayoutParams(size,size)
-                image.layoutParams = imgParams
+                //set viewholder size
+                image.layoutParams = LinearLayout.LayoutParams(size,size)
+                //put image in the frame
                 image.setImageResource(item)
+                //add the view
                 holder.holderLayout.addView(image)
+                println(holder.holderLayout.childCount)
             }
         }
 
@@ -60,7 +62,7 @@ class DeckRecyclerViewAdapter(
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardNameView: TextView = view.findViewById(R.id.card_name)
-        val holderLayout = view.findViewById<LinearLayout>(R.id.deck_list_linear_layout)
+        val holderLayout: LinearLayout = view.findViewById<LinearLayout>(R.id.deck_list_linear_layout)
 
 
 

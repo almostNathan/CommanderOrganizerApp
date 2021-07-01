@@ -1,5 +1,6 @@
 package com.example.commanderorganizerapp
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +14,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ColorStateListInflaterCompat.inflate
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 
 import com.example.commanderorganizerapp.dummy.DummyContent.DummyItem
 import kotlinx.coroutines.job
@@ -45,13 +51,19 @@ class CommanderRecyclerViewAdapter(
             holder.commander.setBackgroundColor(ContextCompat.getColor(holder.commander.context, R.color.card_background_2))
         }
 
+
+        //3 dot options menu
         holder.optionsMenu.setOnClickListener {
             val popupMenu = PopupMenu(holder.commander.context, holder.optionsMenu)
             popupMenu.inflate(R.menu.commander_three_dot_menu)
             popupMenu.setOnMenuItemClickListener {
                 when (it.itemId){
                     R.id.delete_deck -> {
-                        buildConfirmDialog(theCommander.key, holder.commander.context)
+                        buildConfirmDialog(holder, theCommander.key, holder.commander.context)
+                        true
+                    }
+
+                    R.id.edit_deck -> {
                         true
                     }
 
@@ -68,17 +80,21 @@ class CommanderRecyclerViewAdapter(
 
     override fun getItemCount(): Int = commanderList.size
 
-    private fun buildConfirmDialog(commanderId : Int, context: Context){
+    private fun buildConfirmDialog(holder : ViewHolder, commanderId : Int, context: Context){
         val cmdrNameAlertDialog = AlertDialog.Builder(context).create()
         //inflate the enter_cmdr_dialog View
         val dialogView = LayoutInflater.from(context).inflate(R.layout.confirmation_dialog, null)
         //get autocompleteView
-
+        val confirmationMessage = "Delete this deck?"
+        dialogView.findViewById<TextView>(R.id.delete_confirmation_text).text = confirmationMessage
         val buttonSubmit: Button = dialogView.findViewById(R.id.delete_confirmation_submit)
         val buttonCancel: Button = dialogView.findViewById(R.id.delete_confirmation_cancel)
 
+        //ONCLICKLISTENERS
         buttonSubmit.setOnClickListener {
             GetStuff.deleteCommander(commanderId, context)
+
+            holder.commander.findNavController().navigate(CommanderListFragmentDirections.actionCommanderListFragmentSelf())
             cmdrNameAlertDialog.dismiss()
         }
         buttonCancel.setOnClickListener {
@@ -89,6 +105,8 @@ class CommanderRecyclerViewAdapter(
         cmdrNameAlertDialog.setView(dialogView)
         cmdrNameAlertDialog.show()
     }
+
+
 
 
 

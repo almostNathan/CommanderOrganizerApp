@@ -14,9 +14,10 @@
 
     <TextView
         android:id="@+id/commander_options_menu"
-        android:layout_width="20dp"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:text="@string/three_dot_menu"
+        android:paddingVertical="@dimen/adapter_vertical_padding"
         android:textAppearance="?android:textAppearanceLarge"
         android:textAlignment="center"/>
 

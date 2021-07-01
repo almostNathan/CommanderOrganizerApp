@@ -2,8 +2,7 @@ package com.example.commanderorganizerapp
 
 import android.annotation.SuppressLint
 import android.content.Context
-import java.io.FileInputStream
-import java.io.ObjectInputStream
+import java.io.*
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
@@ -95,19 +94,38 @@ class GetStuff {
             val commanders = getCommandersInDecks(context)
 
             //look for cards with commanderId in their list and remove
-            for (card in allCards){
+            for (card in allCards.reversed()){
                 if (card.listOfCommanders.contains(commanderId)){
                     card.listOfCommanders.remove(commanderId)
                     //if card is in no decks, remove card
-                    if(card.listOfCommanders.isEmpty()){
+                    if(card.listOfCommanders.size == 0){
                         allCards.remove(card)
                     }
                 }
             }
-            for (commander in commanders){
+            for (commander in commanders.reversed()){
                 if (commander.key == commanderId){
                     commanders.remove(commander)
+                    println("commander removed")
+
                 }
+            }
+
+            //save file if they exist
+            val deckFile = File("${context.filesDir} cardsInDecks")
+            if (deckFile.exists()) {
+                deckFile.createNewFile()
+                val newOutputStream = ObjectOutputStream(FileOutputStream(deckFile))
+                newOutputStream.writeObject(allCards)
+                newOutputStream.close()
+            }
+            val commanderFile = File("${context.filesDir} commandersInDecks")
+            if (commanderFile.exists()) {
+                commanderFile.createNewFile()
+                val outputStream = ObjectOutputStream(FileOutputStream(commanderFile))
+                outputStream.writeObject(commanders)
+                outputStream.close()
+
             }
         }
 

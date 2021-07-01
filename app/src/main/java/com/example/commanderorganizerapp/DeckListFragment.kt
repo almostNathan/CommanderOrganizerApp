@@ -44,7 +44,7 @@ class DeckListFragment : Fragment() {
         for(card in cardsInCurrentDeck){
             allCardsManaCost.add(GetStuff.getManaCostIdArray(card.cardManaCost))
         }
-        viewList.adapter = DeckRecyclerViewAdapter(cardsInCurrentDeck, allCardsManaCost)
+        viewList.adapter = DeckListRecyclerViewAdapter(cardsInCurrentDeck, allCardsManaCost)
 
     }
 

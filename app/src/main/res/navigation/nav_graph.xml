@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_commander_list_fragment_to_search_cards_fragment"
             app:destination="@id/search_cards_fragment" />
+        <action
+            android:id="@+id/action_commander_list_fragment_self"
+            app:destination="@id/commander_list_fragment" />
     </fragment>
     <fragment
         android:id="@+id/add_deck_fragment"

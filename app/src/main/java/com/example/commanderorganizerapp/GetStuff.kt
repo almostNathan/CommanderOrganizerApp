@@ -76,16 +76,17 @@ class GetStuff {
             if (!manaCostString.isEmpty()) {
                 val splitStringArray = manaCostString.split("{") as ArrayList<String>
                 splitStringArray.removeAt(0)
+                //fixedArray = array of symbols without {} around them
                 val fixedArray = splitStringArray.map { it.replace("}", "") } as ArrayList<String>
 
+                //manaSymbolIdArray = convert the mana symbols "R" into its drawable ID
                 val manaSymbolIdArray = ArrayList<Int>()
-
                 for (item in fixedArray) {
                     manaSymbolConverter[item]?.let { manaSymbolIdArray.add(it) }
                 }
                 return manaSymbolIdArray
             }else{
-                return ArrayList<Int>()
+                return ArrayList()
             }
         }
 

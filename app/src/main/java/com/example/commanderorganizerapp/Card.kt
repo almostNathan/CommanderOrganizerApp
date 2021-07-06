@@ -8,9 +8,11 @@ class Card(val cardName: String,
            commanderValue: Int) : Serializable {
 
     var listOfCommanders = ArrayList<Int>()
+    var manaSymbolArray = ArrayList<Int>()
 
     init{
         listOfCommanders.add(commanderValue)
+        manaSymbolArray = GetStuff.getManaCostIdArray(cardManaCost)
     }
 
 

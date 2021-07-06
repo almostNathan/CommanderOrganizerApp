@@ -17,7 +17,6 @@ import com.example.commanderorganizerapp.dummy.DummyContent.DummyItem
  */
 class DeckListRecyclerViewAdapter(
     private val cardsInThisDeck: List<Card>,
-    private val allCardsManaCost : ArrayList<ArrayList<Int>>
 ) : RecyclerView.Adapter<DeckListRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,12 +28,14 @@ class DeckListRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val card = cardsInThisDeck[position]
         holder.cardNameView.text = card.cardName
+        println(holder.holderLayout.childCount)
 
 
         //draw manacost  PROBLEM redraws manacost on scroll
-        //if this rows # of children views less than manacost length
-        if (allCardsManaCost[position].size >= 0 && holder.holderLayout.childCount - 1 < allCardsManaCost[position].size) {
-            for (item in allCardsManaCost[position]) {
+        //if this rows # of children views less than 1
+        //TODO mana costs are not lined up and shift
+        if (card.manaSymbolArray.size >= 0 && holder.holderLayout.childCount == 1) {
+            for (item in card.manaSymbolArray) {
                 val image = ImageView(holder.itemView.context)
                 //get the preset manaSymbol size
                 val size = holder.holderLayout.resources.getDimensionPixelSize(R.dimen.manacost_icon_size)
@@ -44,7 +45,7 @@ class DeckListRecyclerViewAdapter(
                 image.setImageResource(item)
                 //add the view
                 holder.holderLayout.addView(image)
-                println(holder.holderLayout.childCount)
+                println("manaCostPosition $position")
             }
         }
 

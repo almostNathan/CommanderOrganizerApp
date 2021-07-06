@@ -98,9 +98,12 @@ class AddDeckFragment : Fragment() {
         }
 
         submitButton.setOnClickListener {
+            //save the decklist as text
             val decklist = deckListEditText.text.toString()
-
+            //add the decklist to pool of cards
             DeckListAdder(decklist, view.context).addDeck()
+
+            //navigate back to home screen
             val action = AddDeckFragmentDirections.actionAddDeckFragmentToCommanderListFragment()
             view.findNavController().navigate(action)
 

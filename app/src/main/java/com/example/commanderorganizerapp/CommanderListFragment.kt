@@ -26,8 +26,6 @@ class CommanderListFragment : Fragment() {
         val viewList = view.findViewById<RecyclerView>(R.id.commander_list)
         val commanderList = GetStuff.getCommandersInDecks(context)
 
-
-
         val theAdapter = CommanderRecyclerViewAdapter(commanderList)
         viewList.adapter= theAdapter
 
